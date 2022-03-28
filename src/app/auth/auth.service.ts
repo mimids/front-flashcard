@@ -25,7 +25,7 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  isUsableWithoutApi = environment.apiUrl === '';
+  isUsableWithoutApi = environment.apiUrl;
 
   constructor(
     private readonly userService: UserService,
