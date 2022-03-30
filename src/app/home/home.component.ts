@@ -25,9 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.api.ListVocabularies().then(event => {
+    this.api.ListVocabularies(undefined, 10).then(event => {
       this.datas = event.items as Vocabulary[];
-      console.log('this.datas' + this.datas);
     });
 
     this.subscription = <Subscription>(

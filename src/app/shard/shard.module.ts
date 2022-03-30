@@ -17,11 +17,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ImageCropperModule } from 'ngx-image-cropper';
-
 import { FileUploadZoneComponent } from './components/file-upload-zone/file-upload-zone.component';
 import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
 import { ImageDefaultDirective } from './directives/image-default.directive';
 import { ApiPathPipe } from './pipes/api-path.pipe';
+import { MatSelectModule } from '@angular/material/select';
 
 const angularModules = [FormsModule, ReactiveFormsModule];
 const materialModules = [
@@ -40,6 +40,7 @@ const materialModules = [
   MatSnackBarModule,
   MatTabsModule,
   MatTooltipModule,
+  MatSelectModule,
 ];
 const libraryModules = [ImageCropperModule];
 

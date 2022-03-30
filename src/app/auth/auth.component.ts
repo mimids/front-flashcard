@@ -7,8 +7,14 @@ import {
 
 import { environment } from '../../environments/environment';
 
-import { MockUser, mockUser } from './auth.mock';
+// from here for aws api
+import Amplify from 'aws-amplify';
+import amplify from '../../aws-exports';
 
+import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
+
+
+// until here for aws api
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -18,17 +24,19 @@ import { MockUser, mockUser } from './auth.mock';
 export class AuthComponent implements OnInit {
   errorMessage = '';
   isUsableWithoutApi = environment.apiUrl === '';
-  mockUser: MockUser = mockUser;
+  user: CognitoUserInterface | undefined;
+  authState: AuthState | undefined;
 
-  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private readonly ref: ChangeDetectorRef,
+  
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  onErrorHappens(errorMessage: string): void {
-    this.errorMessage = errorMessage;
-    this.changeDetectorRef.detectChanges();
-    setTimeout(() => {
-      this.errorMessage = '';
-    }, 500);
+  }
+
+  ngOnDestroy() {
   }
 }
