@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreModule } from './core/core.module';
 
+
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -34,7 +35,9 @@ export const routes: Routes = [
   ],
   imports: [
     CoreModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' },
+    ),
+
   ],
   providers: [],
   bootstrap: [AppComponent],

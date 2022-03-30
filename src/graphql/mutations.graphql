@@ -1,0 +1,52 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateVocabulary(
+  $input: CreateVocabularyInput!
+  $condition: ModelVocabularyConditionInput
+) {
+  createVocabulary(input: $input, condition: $condition) {
+    id
+    word
+    meaning
+    lang_word
+    lang_meaning
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateVocabulary(
+  $input: UpdateVocabularyInput!
+  $condition: ModelVocabularyConditionInput
+) {
+  updateVocabulary(input: $input, condition: $condition) {
+    id
+    word
+    meaning
+    lang_word
+    lang_meaning
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteVocabulary(
+  $input: DeleteVocabularyInput!
+  $condition: ModelVocabularyConditionInput
+) {
+  deleteVocabulary(input: $input, condition: $condition) {
+    id
+    word
+    meaning
+    lang_word
+    lang_meaning
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

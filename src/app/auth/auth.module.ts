@@ -13,6 +13,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from '../../aws-exports';
 
 const routes: Routes = [
   { path: '', component: AuthComponent, canActivate: [NotUserGuard] },
@@ -47,7 +51,8 @@ const routes: Routes = [
     ForgotPasswordDialogComponent,
     ResetPasswordComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
+  imports: [CommonModule, RouterModule.forChild(routes),    AmplifyAuthenticatorModule,
+    ReactiveFormsModule, SharedModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 
 })

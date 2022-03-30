@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-frashcard-dev-102851-authRole",
+      "UnauthRoleArn": "arn:aws:iam::334519278567:role/amplify-frashcard-dev-102851-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::334519278567:role/amplify-frashcard-dev-102851-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-frashcard-dev-102851-deployment",
+      "UnauthRoleName": "amplify-frashcard-dev-102851-unauthRole",
+      "StackName": "amplify-frashcard-dev-102851",
+      "StackId": "arn:aws:cloudformation:us-east-1:334519278567:stack/amplify-frashcard-dev-102851/7404e0f0-b003-11ec-bcb0-0ec92f60fb8b",
+      "AmplifyAppId": "d211swu9gvqg0m"
+    },
+    "categories": {
+      "auth": {
+        "frashcardf190e5ef": {}
+      }
+    }
+  }
+}

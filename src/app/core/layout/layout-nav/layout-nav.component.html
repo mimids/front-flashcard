@@ -23,17 +23,7 @@
     />
     <h1 class="app-brand-title">{{ appTitle }}</h1>
   </div>
-  <div class="media-hide-on-small p-0">
-    <a
-      *ngFor="let destination of destinations; trackBy: trackByIndex"
-      mat-button
-      routerLinkActive="theme-primary active"
-      [routerLink]="destination.path"
-    >
-      <mat-icon mat-list-icon class="mr-10">{{ destination.icon }}</mat-icon>
-      <span>{{ destination.name }}</span>
-    </a>
-  </div>
+
 
   <span class="fill-remaining-space media-hide-on-small"></span>
 

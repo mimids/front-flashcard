@@ -7,8 +7,8 @@
   "license": "ISC",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "[ -f src/aws-exports.js ] && mv src/aws-exports.js src/aws-exports.ts || ng serve; ng serve",
+    "build": "[ -f src/aws-exports.js ] && mv src/aws-exports.js src/aws-exports.ts || ng build --prod; ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "testele": "echo \"Error: no test specified\" && exit 1",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@angular/animations": "~13.1.1",
     "@angular/cdk": "^12.2.13",
+    "@angular/cli": "^12.2.0",
     "@angular/common": "~13.1.1",
     "@angular/compiler": "~13.1.1",
     "@angular/core": "~13.1.1",
@@ -31,7 +32,11 @@
     "@angular/platform-browser-dynamic": "~13.1.1",
     "@angular/router": "~13.1.1",
     "@angular/service-worker": "~13.1.1",
+    "@aws-amplify/auth": "^4.5.0",
+    "@aws-amplify/ui-angular": "^2.3.3",
     "asar": "^3.1.0",
+    "aws-amplify": "^4.3.18",
+    "aws-amplify-angular": "^6.0.26",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-squirrel-startup": "^1.0.0",
     "material-design-icons-iconfont": "^6.1.1",
@@ -43,7 +48,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.1.2",
-    "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.1",
     "@angular/localize": "^13.1.1",
     "@electron-forge/cli": "^6.0.0-beta.61",
@@ -60,7 +64,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.4"
+    "typescript": "^4.5.5"
   },
   "config": {
     "forge": {

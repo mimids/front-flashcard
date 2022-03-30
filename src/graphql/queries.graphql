@@ -1,0 +1,65 @@
+# this is an auto generated file. This will be overwritten
+query GetVocabulary($id: ID!) {
+  getVocabulary(id: $id) {
+    id
+    word
+    meaning
+    lang_word
+    lang_meaning
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListVocabularies(
+  $filter: ModelVocabularyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listVocabularies(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncVocabularies(
+  $filter: ModelVocabularyFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncVocabularies(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

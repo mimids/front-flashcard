@@ -1,9 +1,17 @@
 const { app, BrowserWindow } = require('electron');
+
+// from here for aws api
+import { Amplify } from 'aws-amplify';
+import amplify from './aws-exports';
+import Auth from '@aws-amplify/auth';
+
+
+Amplify.configure(amplify);
+// until here for aws api
 const { truncate } = require('fs');
 const path = require("path");
 const url = require('url');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
-
 
 let win;
 function createWindow() {

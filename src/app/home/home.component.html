@@ -1,1 +1,34 @@
 <p>home works!</p>
+
+<div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>Word: </label>
+        <input type="text" formControlName="word" autocomplete="off" />
+      </div>
+      <div>
+        <label>lang: </label>
+        <input type="text" formControlName="lang_word" autocomplete="off" />
+      </div>
+      <div>
+        <label>Meaning: </label>
+        <input type="text" formControlName="meaning" autocomplete="off" />
+      </div>
+      <div>
+        <label>lang: </label>
+        <input type="text" formControlName="lang_meaning" autocomplete="off" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <hr>
+  <h1>List</h1>
+  <div *ngFor="let data of datas">
+    <div>{{ data.word }}</div>
+    <div>{{ data.meaning }}</div>
+  </div>
+  <hr>
