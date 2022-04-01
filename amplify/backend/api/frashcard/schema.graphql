@@ -5,4 +5,9 @@ type Vocabulary @model @auth(rules: [{allow: public}]) {
   lang_word: String!
   lang_meaning: String!
 }
- 
+
+type Answer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  card : Vocabulary
+  isRight: Boolean
+}

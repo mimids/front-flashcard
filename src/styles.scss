@@ -1,2 +1,13 @@
-@import '~@aws-amplify/ui-angular/theme.css';
-html, body { height: 100%; }
+@import "~@aws-amplify/ui-angular/theme.css";
+html,
+body {
+  height: 100%;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: row;
+}

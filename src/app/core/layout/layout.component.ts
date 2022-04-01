@@ -58,7 +58,12 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
         icon: 'home',
       },
       {
-        name: $localize`:@@articles:Flash Card`,
+        name: $localize`:@@flashcard:Card List`,
+        path: 'list',
+        icon: 'list',
+      },
+      {
+        name: $localize`:@@flashcard:Flash Card`,
         path: 'flashcard',
         icon: 'book',
       },

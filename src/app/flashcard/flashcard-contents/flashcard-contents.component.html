@@ -1,12 +1,13 @@
 <div class="flip-container" [class.flip]= "showAnswer" (click) = "flip()">
     <div class="flipper">
         <div class="front">
-            {{card.question}}
+            {{card.word}}
         </div>
         <div class="back">
-            {{card.answer}}
+            <div class="flex-column">
+            {{card.meaning}}
             <button class="btn btn-success btn-sm m-2" (click) = "setAnswer(true)">right answer</button>
             <button class="btn btn-danger btn-sm m-2" (click) = "setAnswer(false)">wrong answer</button>
-        </div>
+        </div></div>
     </div>
 </div>

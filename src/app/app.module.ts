@@ -30,6 +30,11 @@ export const routes: Routes = [
   {
     path: 'flashcard',
     loadChildren: () =>
+      import('./flashcard/flashcard.module').then((m) => m.FlashcardModule),
+  },
+  {
+    path: 'list',
+    loadChildren: () =>
       import('./flashcard-list/flashcard-list.module').then((m) => m.FlashcardListModule),
   },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
@@ -38,7 +43,6 @@ export const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     CoreModule,

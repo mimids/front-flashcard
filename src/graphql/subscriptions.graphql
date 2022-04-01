@@ -41,3 +41,72 @@ subscription OnDeleteVocabulary {
     _lastChangedAt
   }
 }
+subscription OnCreateAnswer {
+  onCreateAnswer {
+    id
+    card {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    isRight
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAnswer {
+  onUpdateAnswer {
+    id
+    card {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    isRight
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAnswer {
+  onDeleteAnswer {
+    id
+    card {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    isRight
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

@@ -1,0 +1,20 @@
+<section class="card-list">
+
+    <h2 il8></h2>
+    
+    <div>
+        <div *ngFor="let card of web.cards">
+            <div class="card-body d-flex justify-content-center">
+           <app-flashcard-contents [card]="card" (answer) = "saveAnswer($event)" ></app-flashcard-contents>
+        </div>
+        </div>
+    </div>
+    
+    <div  *ngIf="web.allCardsAnswered">
+        <div class="card-body d-flex justify-content-center">
+            <button class="btn btn-danger m-2" (click)="reset()" >restart</button>
+            <button class="btn btn-success m-2" (click)="saveAll()" >save</button>
+        </div>
+    </div>
+    </section>
+    

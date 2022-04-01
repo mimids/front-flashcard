@@ -63,3 +63,94 @@ query SyncVocabularies(
     startedAt
   }
 }
+query GetAnswer($id: ID!) {
+  getAnswer(id: $id) {
+    id
+    card {
+      id
+      word
+      meaning
+      lang_word
+      lang_meaning
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    isRight
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAnswers(
+  $filter: ModelAnswerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAnswers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      card {
+        id
+        word
+        meaning
+        lang_word
+        lang_meaning
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      isRight
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAnswers(
+  $filter: ModelAnswerFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAnswers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      card {
+        id
+        word
+        meaning
+        lang_word
+        lang_meaning
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      isRight
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

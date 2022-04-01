@@ -3,11 +3,12 @@
   "serviceConfiguration": {
     "apiName": "frashcard",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-2eea9507-2ba6-4e32-9382-f1807c824271/amplify/backend/api/frashcard/schema.graphql",
+    "gqlSchemaPath": "/home/step63/stady/flachcard/ng-flash-card-front/amplify/backend/api/frashcard/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "expirationTime": 30,
+      "apiKeyExpirationDate": "2022-05-01T11:12:21.666Z",
+      "keyDescription": "api key description"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {

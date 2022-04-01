@@ -28,13 +28,13 @@ export class AuthComponent implements OnInit {
   authState: AuthState | undefined;
 
   constructor(
-    private readonly ref: ChangeDetectorRef,
+    private readonly changeDetectorRef: ChangeDetectorRef,
   
   ) {
   }
 
   ngOnInit(): void {
-
+    this.changeDetectorRef.detectChanges();
   }
 
   ngOnDestroy() {

@@ -9,6 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
+              "apiKeyExpirationDate": "2022-05-01T11:12:21.666Z",
               "description": "api key description"
             }
           },
@@ -46,5 +47,6 @@
         ]
       }
     }
-  }
+  },
+  "hosting": {}
 }

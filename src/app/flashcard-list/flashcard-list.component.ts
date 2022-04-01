@@ -1,41 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { WebService } from '../services/web.service';
-
+import { APIService,Vocabulary } from '../API.service';
 @Component({
   selector: 'app-flashcard-list',
   templateUrl: './flashcard-list.component.html',
   styleUrls: ['./flashcard-list.component.scss']
 })
 export class FlashcardListComponent implements OnInit {
-@Input() card: any;
+public datas: Array<Vocabulary> = [];
 
-  constructor(public web : WebService) { }
+  constructor(private api: APIService, public web : WebService,    private readonly changeDetectorRef: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
-    console.log(this.web.allCardsAnswered,this.web.cards);
+    this.api.ListVocabularies().then(event => {
+      this.datas = event.items as Vocabulary[];
+      this.changeDetectorRef.detectChanges();
+    });
     
   }
 
-  saveAnswer(answer: any){
-    this.web.saveAnswer(answer);
-  }
-
-  saveAll(){
-    this.web.saveAllAnswersToServer().subscribe(data => {
-      console.log('All Success',data);
-      this.web.getCards();
-    }, err => {
-      console.log('All error',err);
-    })
-  }
-
-  reset(){
-    this.web.reset().subscribe(data =>{
-      console.log('reset Success',data);
-      this.web.getCards();
-    }, err => {
-      console.error('reset Failure',err);
-    })
-  }
+  
 
 }

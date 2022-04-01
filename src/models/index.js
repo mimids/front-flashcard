@@ -4,8 +4,9 @@ import { schema } from './schema';
 
 
 
-const { Vocabulary } = initSchema(schema);
+const { Vocabulary, Answer } = initSchema(schema);
 
 export {
-  Vocabulary
+  Vocabulary,
+  Answer
 };

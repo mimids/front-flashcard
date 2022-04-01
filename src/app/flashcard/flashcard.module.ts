@@ -2,12 +2,16 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA,  NO_ERRORS_SCHEMA} from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shard/shard.module';
-import { FlashcardListComponent } from './flashcard-list.component';
+import { FlashcardComponent } from './flashcard.component';
+import { FlashcardContentsComponent } from '../flashcard/flashcard-contents/flashcard-contents.component';
 
-const routes: Routes = [{ path: '', component:  FlashcardListComponent}];
+
+
+const routes: Routes = [{ path: '', component:  FlashcardComponent}];
+
 @NgModule({
-  declarations: [FlashcardListComponent],
+  declarations: [FlashcardComponent, FlashcardContentsComponent],
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })
-export class FlashcardListModule { }
+export class FlashcardModule { }
