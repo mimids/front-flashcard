@@ -4,14 +4,12 @@ import { Subscription } from 'rxjs';
 import { APIService, Vocabulary } from '../../API.service';
 import { SnackbarService } from '../../services/snackbar.service';
 
-
 @Component({
   selector: 'app-vocabulary',
   templateUrl: './vocabulary.component.html',
-  styleUrls: ['./vocabulary.component.scss']
+  styleUrls: ['./vocabulary.component.scss'],
 })
 export class VocabularyComponent implements OnInit {
-
   public createForm: FormGroup;
   public datas: Array<Vocabulary> = [];
   private subscription: Subscription | null = null;
@@ -31,6 +29,7 @@ export class VocabularyComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.changeDetectorRef.detectChanges();
     this.api.ListVocabularies(undefined, 10).then((event) => {
       this.datas = event.items as Vocabulary[];
       this.changeDetectorRef.detectChanges();
@@ -49,13 +48,12 @@ export class VocabularyComponent implements OnInit {
       .CreateVocabulary(data)
       .then((event) => {
         console.log('item created!');
-        this.snackbarService.open('item created!', 'primary'),
-                this.changeDetectorRef.detectChanges();
-          this.createForm.reset();
+        this.snackbarService.open('item created!', 'accent'),
+        this.createForm.reset();
       })
       .catch((e) => {
         this.snackbarService.open('error creating data...', 'warn'),
-        console.log('error creating data...', e);
+          console.log('error creating data...', e);
       });
   }
   ngOnDestroy() {
@@ -64,5 +62,4 @@ export class VocabularyComponent implements OnInit {
     }
     this.subscription = null;
   }
-
 }
