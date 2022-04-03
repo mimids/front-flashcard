@@ -1,6 +1,6 @@
 {
   "api": {
-    "frashcard": {
+    "flashcard": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -9,6 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
+              "apiKeyExpirationDate": "2022-05-03T12:57:56.269Z",
               "description": "api key description"
             }
           },
@@ -22,7 +23,7 @@
     }
   },
   "auth": {
-    "frashcardf190e5ef": {
+    "flashcardea7768c7": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

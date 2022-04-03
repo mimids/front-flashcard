@@ -38,16 +38,20 @@ text-align: center;
   .front {
     z-index: 2;
     /* for firefox 31 */
+    color: black;
     transform: rotateY(0deg);
-    background-color: brown;
+    border: 1px solid navy;
+    background-color: lightblue;
   }
   
   /* back, initially hidden pane */
   .back {
     transform: rotateY(180deg);
-    background-color: rgb(42, 110, 165);
+    border: 1px solid navy;
+    background-color: cadetblue;
   }
-
-  
-
+  button{
+    margin: 10px;
+    width: 120px
+  }
 }

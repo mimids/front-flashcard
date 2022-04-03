@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { WebService } from '../services/web.service';
+import { ChangeDetectorRef, Component, Input, NgZone, OnInit } from '@angular/core';
 import { APIService, Vocabulary } from '../API.service';
+import { WebService } from '../services/web.service';
 
 @Component({
   selector: 'app-flashcard',
@@ -9,34 +9,79 @@ import { APIService, Vocabulary } from '../API.service';
 })
 export class FlashcardComponent implements OnInit {
 @Input() card: any;
+allCardsAnswered=false;
+cards:Vocabulary[]=[];
 
-  constructor(public web : WebService) { }
+  constructor(private api: APIService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
+
+    ) { }
 
   ngOnInit(): void {
-    console.log(this.web.allCardsAnswered,this.web.cards);
+
+    // console.log(this.web.allCardsAnswered,this.web.cards);
+    this.api.ListVocabularies(undefined, 10).then((event) => {
+      this.cards = event.items as Vocabulary[];
+      this.changeDetectorRef.detectChanges();
+      // 
+    });
+    }
+    
+    
+    saveAll(){
     
   }
 
-  saveAnswer(answer: any){
-    this.web.saveAnswer(answer);
+
+  saveAnswer(answer: any) {
+    console.log('event ddd', answer);
+// this.web.saveAnswer(answer);
   }
 
-  saveAll(){
-    // this.web.saveAllAnswersToServer().subscribe(data => {
-    //   console.log('All Success',data);
-    //   this.web.getCards();
-    // }, err => {
-    //   console.log('All error',err);
+
+  reset(){
+    // this.cards.forEach((card)=>{
+    //   this.api
+    //   .UpdateAnswer({ id: card.id as string, isRight: false })
+    //   .then((event) => {
+    //     console.log('answer updated!',false );
+    //   })
+    //   .catch((e) => {
+    //     console.log('error updating answer...', e);
+    //   });
     // })
   }
 
-  reset(){
-    this.web.reset().subscribe(data =>{
-      console.log('reset Success',data);
-      this.web.getCards();
-    }, err => {
-      console.error('reset Failure',err);
+
+  delete(){
+    this.cards.forEach((card)=>{
+    this.api
+    .DeleteCard({ id: card.id as string })
+    .then((event) => {
+      console.log('answer deleted!');
     })
+    .catch((e) => {
+      console.log('error deleting answer...', e);
+    });
+  
+    })
+  }
+
+  cleateAll(){
+
+    // this.cards.forEach((card=>{
+    //     console.log('card',card);
+        
+    //     this.api
+    //     .CreateAnswer({ vocabularyID: card.id as string , isRight: false })
+    //     .then((event) => {
+    //       console.log('answer created!');
+    //     })
+    //     .catch((e) => {
+    //       console.log('error creating answer...', e);
+    //     });
+    //   }))
+
   }
 
 }

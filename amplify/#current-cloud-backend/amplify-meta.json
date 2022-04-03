@@ -1,19 +1,19 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-frashcard-dev-102851-authRole",
-      "UnauthRoleArn": "arn:aws:iam::334519278567:role/amplify-frashcard-dev-102851-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::334519278567:role/amplify-frashcard-dev-102851-authRole",
+      "AuthRoleName": "amplify-flashcard-dev-125037-authRole",
+      "UnauthRoleArn": "arn:aws:iam::334519278567:role/amplify-flashcard-dev-125037-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::334519278567:role/amplify-flashcard-dev-125037-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-frashcard-dev-102851-deployment",
-      "UnauthRoleName": "amplify-frashcard-dev-102851-unauthRole",
-      "StackName": "amplify-frashcard-dev-102851",
-      "StackId": "arn:aws:cloudformation:us-east-1:334519278567:stack/amplify-frashcard-dev-102851/7404e0f0-b003-11ec-bcb0-0ec92f60fb8b",
-      "AmplifyAppId": "d211swu9gvqg0m"
+      "DeploymentBucketName": "amplify-flashcard-dev-125037-deployment",
+      "UnauthRoleName": "amplify-flashcard-dev-125037-unauthRole",
+      "StackName": "amplify-flashcard-dev-125037",
+      "StackId": "arn:aws:cloudformation:us-east-1:334519278567:stack/amplify-flashcard-dev-125037/e7c19a70-b33b-11ec-962a-0a06e6b8ef69",
+      "AmplifyAppId": "d32b8i3h42gr5i"
     }
   },
   "api": {
-    "frashcard": {
+    "flashcard": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -22,6 +22,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 30,
+              "apiKeyExpirationDate": "2022-05-03T12:57:56.269Z",
               "description": "api key description"
             }
           },
@@ -31,20 +32,20 @@
             }
           ]
         },
-        "GraphQLAPIIdOutput": "vsx2iwo57bcilj2truqdgaw4na",
-        "GraphQLAPIEndpointOutput": "https://peemz27hzbd6bbvzzqlsynyh6a.appsync-api.us-east-1.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-wo3mhp5j7bbj3nbltg5cggt47u"
+        "GraphQLAPIIdOutput": "wmg3aa2txbfyxogr5jmzmtetlm",
+        "GraphQLAPIEndpointOutput": "https://42dcnezudnfblip6673ztxctym.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-5knalj7jwngjrf3xjgl5bqhyom"
       },
-      "lastPushTimeStamp": "2022-03-30T09:16:18.798Z",
+      "lastPushTimeStamp": "2022-04-03T13:04:26.602Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-frashcard-dev-102851-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "logicalId": "apifrashcard"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-flashcard-dev-125037-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiflashcard"
       },
-      "lastPushDirHash": "WlAAPw4Uve7k+QPFh1ZKBUet6kg="
+      "lastPushDirHash": "Vz6prXsDnWhxKS1Wksw25H9u2gY="
     }
   },
   "auth": {
-    "frashcardf190e5ef": {
+    "flashcardea7768c7": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -67,21 +68,20 @@
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-frashcard-dev-102851-deployment/amplify-cfn-templates/auth/frashcardf190e5ef-cloudformation-template.json",
-        "logicalId": "authfrashcardf190e5ef"
-      },
-      "lastPushTimeStamp": "2022-03-30T09:16:18.798Z",
       "output": {
-        "UserPoolId": "us-east-1_aFxMZSNQY",
-        "AppClientIDWeb": "3ti6a3otbetmuur8bvgnsbkndr",
-        "AppClientID": "4j52mrag0b6ujqok8lrjvih2c2",
-        "IdentityPoolId": "us-east-1:454fd815-cf4b-4f25-bb85-bca353cf81f7",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:334519278567:userpool/us-east-1_aFxMZSNQY",
-        "IdentityPoolName": "frashcardf190e5ef_identitypool_f190e5ef__dev",
-        "UserPoolName": "frashcardf190e5ef_userpool_f190e5ef"
+        "UserPoolId": "us-east-1_Yc6NoMjkT",
+        "AppClientIDWeb": "3m1jr3jieidn8v6mm524gbf724",
+        "AppClientID": "3q762qigf7pqq20eu0h4ulppc6",
+        "IdentityPoolId": "us-east-1:cfee3b7d-ae61-404a-bd39-0057fc0ea1ef",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:334519278567:userpool/us-east-1_Yc6NoMjkT",
+        "IdentityPoolName": "flashcardea7768c7_identitypool_ea7768c7__dev",
+        "UserPoolName": "flashcardea7768c7_userpool_ea7768c7"
       },
-      "lastPushDirHash": "377JlALLFnk5ducsVYV0f/4lRPE="
+      "lastPushTimeStamp": "2022-04-03T13:04:21.089Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-flashcard-dev-125037-deployment/amplify-cfn-templates/auth/flashcardea7768c7-cloudformation-template.json",
+        "logicalId": "authflashcardea7768c7"
+      }
     }
   }
 }

@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "flashcard",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-04-03T11:10:32.754Z"
+}

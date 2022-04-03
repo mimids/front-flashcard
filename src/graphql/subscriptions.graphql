@@ -1,4 +1,52 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateCard {
+  onCreateCard {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateCard {
+  onUpdateCard {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteCard {
+  onDeleteCard {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
 subscription OnCreateVocabulary {
   onCreateVocabulary {
     id
@@ -6,6 +54,7 @@ subscription OnCreateVocabulary {
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -20,6 +69,7 @@ subscription OnUpdateVocabulary {
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -34,6 +84,7 @@ subscription OnDeleteVocabulary {
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -41,22 +92,10 @@ subscription OnDeleteVocabulary {
     _lastChangedAt
   }
 }
-subscription OnCreateAnswer {
-  onCreateAnswer {
+subscription OnCreateCategory {
+  onCreateCategory {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version
@@ -64,22 +103,10 @@ subscription OnCreateAnswer {
     _lastChangedAt
   }
 }
-subscription OnUpdateAnswer {
-  onUpdateAnswer {
+subscription OnUpdateCategory {
+  onUpdateCategory {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version
@@ -87,22 +114,10 @@ subscription OnUpdateAnswer {
     _lastChangedAt
   }
 }
-subscription OnDeleteAnswer {
-  onDeleteAnswer {
+subscription OnDeleteCategory {
+  onDeleteCategory {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version

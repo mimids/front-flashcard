@@ -1,13 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
     "api": {
-        "frashcard": {
+        "flashcard": {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         }
     },
     "auth": {
-        "frashcardf190e5ef": {
+        "flashcardea7768c7": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",

@@ -1,4 +1,61 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateCard(
+  $input: CreateCardInput!
+  $condition: ModelCardConditionInput
+) {
+  createCard(input: $input, condition: $condition) {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateCard(
+  $input: UpdateCardInput!
+  $condition: ModelCardConditionInput
+) {
+  updateCard(input: $input, condition: $condition) {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteCard(
+  $input: DeleteCardInput!
+  $condition: ModelCardConditionInput
+) {
+  deleteCard(input: $input, condition: $condition) {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
 mutation CreateVocabulary(
   $input: CreateVocabularyInput!
   $condition: ModelVocabularyConditionInput
@@ -9,6 +66,7 @@ mutation CreateVocabulary(
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -26,6 +84,7 @@ mutation UpdateVocabulary(
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -43,6 +102,7 @@ mutation DeleteVocabulary(
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -50,25 +110,13 @@ mutation DeleteVocabulary(
     _lastChangedAt
   }
 }
-mutation CreateAnswer(
-  $input: CreateAnswerInput!
-  $condition: ModelAnswerConditionInput
+mutation CreateCategory(
+  $input: CreateCategoryInput!
+  $condition: ModelCategoryConditionInput
 ) {
-  createAnswer(input: $input, condition: $condition) {
+  createCategory(input: $input, condition: $condition) {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version
@@ -76,25 +124,13 @@ mutation CreateAnswer(
     _lastChangedAt
   }
 }
-mutation UpdateAnswer(
-  $input: UpdateAnswerInput!
-  $condition: ModelAnswerConditionInput
+mutation UpdateCategory(
+  $input: UpdateCategoryInput!
+  $condition: ModelCategoryConditionInput
 ) {
-  updateAnswer(input: $input, condition: $condition) {
+  updateCategory(input: $input, condition: $condition) {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version
@@ -102,25 +138,13 @@ mutation UpdateAnswer(
     _lastChangedAt
   }
 }
-mutation DeleteAnswer(
-  $input: DeleteAnswerInput!
-  $condition: ModelAnswerConditionInput
+mutation DeleteCategory(
+  $input: DeleteCategoryInput!
+  $condition: ModelCategoryConditionInput
 ) {
-  deleteAnswer(input: $input, condition: $condition) {
+  deleteCategory(input: $input, condition: $condition) {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version

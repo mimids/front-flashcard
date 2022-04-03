@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "flashcard",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/home/step63/stady/flachcard/ng-flash-card-front/amplify/backend/api/flashcard/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 30,
+      "apiKeyExpirationDate": "2022-05-03T12:57:56.269Z",
+      "keyDescription": "api key description"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
+  }
+}

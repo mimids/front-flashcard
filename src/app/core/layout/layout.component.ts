@@ -15,12 +15,10 @@ import { environment } from '../../../environments/environment';
 import { Account } from '../models/user.model';
 import { ThemeService } from '../../services/theme.service';
 import { UserService } from '../../services/user.service';
-import { MatSidenav} from '@angular/material/sidenav';
 
 export interface Destination {
   name: string;
   path: string;
-
   icon: string;
 }
 
@@ -32,9 +30,8 @@ export interface Destination {
 })
 export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   @ViewChild('appTitleElement') appTitleElement?: ElementRef<HTMLElement>;
-  @ViewChild('appDescriptionElement') appDescriptionElement?: ElementRef<
-    HTMLElement
-  >;
+  @ViewChild('appDescriptionElement')
+  appDescriptionElement?: ElementRef<HTMLElement>;
 
   appTitle = '';
   appDescription = '';
@@ -48,7 +45,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     private readonly metaService: Meta,
     private readonly themeService: ThemeService,
     private readonly titleService: Title,
-    private readonly userService: UserService,
+    private readonly userService: UserService
   ) {
     this.themeService.init();
     this.destinations = [
@@ -67,6 +64,21 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
         path: 'flashcard',
         icon: 'book',
       },
+      {
+        name: $localize`:@@admin:Vocabulary`,
+        path: 'admin/vocabulary',
+        icon: 'add_to_photos',
+      },
+      {
+        name: $localize`:@@admin:Card`,
+        path: 'admin/card',
+        icon: 'adb',
+      },
+      {
+        name: $localize`:@@admin:Category`,
+        path: 'admin/category',
+        icon: 'toc',
+      },
     ];
   }
 
@@ -75,7 +87,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe(
         (res) => (this.account = res),
-        (err) => (this.account = undefined),
+        (err) => (this.account = undefined)
       );
   }
 

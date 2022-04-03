@@ -10,31 +10,35 @@ export interface SubscriptionResponse<T> {
 }
 
 export type __SubscriptionContainer = {
+  onCreateCard: OnCreateCardSubscription;
+  onUpdateCard: OnUpdateCardSubscription;
+  onDeleteCard: OnDeleteCardSubscription;
   onCreateVocabulary: OnCreateVocabularySubscription;
   onUpdateVocabulary: OnUpdateVocabularySubscription;
   onDeleteVocabulary: OnDeleteVocabularySubscription;
-  onCreateAnswer: OnCreateAnswerSubscription;
-  onUpdateAnswer: OnUpdateAnswerSubscription;
-  onDeleteAnswer: OnDeleteAnswerSubscription;
+  onCreateCategory: OnCreateCategorySubscription;
+  onUpdateCategory: OnUpdateCategorySubscription;
+  onDeleteCategory: OnDeleteCategorySubscription;
 };
 
-export type CreateVocabularyInput = {
+export type CreateCardInput = {
   id?: string | null;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  answers?: AnswerInput | null;
+  name?: string | null;
   _version?: number | null;
 };
 
-export type ModelVocabularyConditionInput = {
-  word?: ModelStringInput | null;
-  meaning?: ModelStringInput | null;
-  lang_word?: ModelStringInput | null;
-  lang_meaning?: ModelStringInput | null;
-  and?: Array<ModelVocabularyConditionInput | null> | null;
-  or?: Array<ModelVocabularyConditionInput | null> | null;
-  not?: ModelVocabularyConditionInput | null;
+export type AnswerInput = {
+  id?: string | null;
+  vocabularyID?: string | null;
+  isRight?: boolean | null;
+};
+
+export type ModelCardConditionInput = {
+  name?: ModelStringInput | null;
+  and?: Array<ModelCardConditionInput | null> | null;
+  or?: Array<ModelCardConditionInput | null> | null;
+  not?: ModelCardConditionInput | null;
 };
 
 export type ModelStringInput = {
@@ -76,86 +80,56 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type Vocabulary = {
-  __typename: "Vocabulary";
+export type Card = {
+  __typename: "Card";
   id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  answers?: Answer | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
-};
-
-export type UpdateVocabularyInput = {
-  id: string;
-  word?: string | null;
-  meaning?: string | null;
-  lang_word?: string | null;
-  lang_meaning?: string | null;
-  _version?: number | null;
-};
-
-export type DeleteVocabularyInput = {
-  id: string;
-  _version?: number | null;
-};
-
-export type CreateAnswerInput = {
-  id?: string | null;
-  isRight?: boolean | null;
-  _version?: number | null;
-};
-
-export type ModelAnswerConditionInput = {
-  isRight?: ModelBooleanInput | null;
-  and?: Array<ModelAnswerConditionInput | null> | null;
-  or?: Array<ModelAnswerConditionInput | null> | null;
-  not?: ModelAnswerConditionInput | null;
-};
-
-export type ModelBooleanInput = {
-  ne?: boolean | null;
-  eq?: boolean | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
 };
 
 export type Answer = {
   __typename: "Answer";
-  id: string;
-  card?: Vocabulary | null;
+  id?: string | null;
+  vocabularyID?: string | null;
   isRight?: boolean | null;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
-export type UpdateAnswerInput = {
+export type UpdateCardInput = {
   id: string;
-  isRight?: boolean | null;
+  answers?: AnswerInput | null;
+  name?: string | null;
   _version?: number | null;
 };
 
-export type DeleteAnswerInput = {
+export type DeleteCardInput = {
   id: string;
   _version?: number | null;
 };
 
-export type ModelVocabularyFilterInput = {
-  id?: ModelIDInput | null;
+export type CreateVocabularyInput = {
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
+  _version?: number | null;
+};
+
+export type ModelVocabularyConditionInput = {
   word?: ModelStringInput | null;
   meaning?: ModelStringInput | null;
   lang_word?: ModelStringInput | null;
   lang_meaning?: ModelStringInput | null;
-  and?: Array<ModelVocabularyFilterInput | null> | null;
-  or?: Array<ModelVocabularyFilterInput | null> | null;
-  not?: ModelVocabularyFilterInput | null;
+  categoryID?: ModelIDInput | null;
+  and?: Array<ModelVocabularyConditionInput | null> | null;
+  or?: Array<ModelVocabularyConditionInput | null> | null;
+  not?: ModelVocabularyConditionInput | null;
 };
 
 export type ModelIDInput = {
@@ -174,6 +148,98 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
+export type Vocabulary = {
+  __typename: "Vocabulary";
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateVocabularyInput = {
+  id: string;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteVocabularyInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type CreateCategoryInput = {
+  id?: string | null;
+  name?: string | null;
+  _version?: number | null;
+};
+
+export type ModelCategoryConditionInput = {
+  name?: ModelStringInput | null;
+  and?: Array<ModelCategoryConditionInput | null> | null;
+  or?: Array<ModelCategoryConditionInput | null> | null;
+  not?: ModelCategoryConditionInput | null;
+};
+
+export type Category = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateCategoryInput = {
+  id: string;
+  name?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteCategoryInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type ModelCardFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelCardFilterInput | null> | null;
+  or?: Array<ModelCardFilterInput | null> | null;
+  not?: ModelCardFilterInput | null;
+};
+
+export type ModelCardConnection = {
+  __typename: "ModelCardConnection";
+  items: Array<Card | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type ModelVocabularyFilterInput = {
+  id?: ModelIDInput | null;
+  word?: ModelStringInput | null;
+  meaning?: ModelStringInput | null;
+  lang_word?: ModelStringInput | null;
+  lang_meaning?: ModelStringInput | null;
+  categoryID?: ModelIDInput | null;
+  and?: Array<ModelVocabularyFilterInput | null> | null;
+  or?: Array<ModelVocabularyFilterInput | null> | null;
+  not?: ModelVocabularyFilterInput | null;
+};
+
 export type ModelVocabularyConnection = {
   __typename: "ModelVocabularyConnection";
   items: Array<Vocabulary | null>;
@@ -181,28 +247,80 @@ export type ModelVocabularyConnection = {
   startedAt?: number | null;
 };
 
-export type ModelAnswerFilterInput = {
+export type ModelCategoryFilterInput = {
   id?: ModelIDInput | null;
-  isRight?: ModelBooleanInput | null;
-  and?: Array<ModelAnswerFilterInput | null> | null;
-  or?: Array<ModelAnswerFilterInput | null> | null;
-  not?: ModelAnswerFilterInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelCategoryFilterInput | null> | null;
+  or?: Array<ModelCategoryFilterInput | null> | null;
+  not?: ModelCategoryFilterInput | null;
 };
 
-export type ModelAnswerConnection = {
-  __typename: "ModelAnswerConnection";
-  items: Array<Answer | null>;
+export type ModelCategoryConnection = {
+  __typename: "ModelCategoryConnection";
+  items: Array<Category | null>;
   nextToken?: string | null;
   startedAt?: number | null;
 };
 
+export type CreateCardMutation = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateCardMutation = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteCardMutation = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
 export type CreateVocabularyMutation = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -212,11 +330,12 @@ export type CreateVocabularyMutation = {
 
 export type UpdateVocabularyMutation = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -226,11 +345,12 @@ export type UpdateVocabularyMutation = {
 
 export type DeleteVocabularyMutation = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -238,23 +358,10 @@ export type DeleteVocabularyMutation = {
   _lastChangedAt: number;
 };
 
-export type CreateAnswerMutation = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type CreateCategoryMutation = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -262,23 +369,10 @@ export type CreateAnswerMutation = {
   _lastChangedAt: number;
 };
 
-export type UpdateAnswerMutation = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type UpdateCategoryMutation = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -286,37 +380,86 @@ export type UpdateAnswerMutation = {
   _lastChangedAt: number;
 };
 
-export type DeleteAnswerMutation = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type DeleteCategoryMutation = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
+};
+
+export type GetCardQuery = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListCardsQuery = {
+  __typename: "ModelCardConnection";
+  items: Array<{
+    __typename: "Card";
+    id: string;
+    answers?: {
+      __typename: "Answer";
+      id?: string | null;
+      vocabularyID?: string | null;
+      isRight?: boolean | null;
+    } | null;
+    name?: string | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncCardsQuery = {
+  __typename: "ModelCardConnection";
+  items: Array<{
+    __typename: "Card";
+    id: string;
+    answers?: {
+      __typename: "Answer";
+      id?: string | null;
+      vocabularyID?: string | null;
+      isRight?: boolean | null;
+    } | null;
+    name?: string | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
 };
 
 export type GetVocabularyQuery = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -328,11 +471,12 @@ export type ListVocabulariesQuery = {
   __typename: "ModelVocabularyConnection";
   items: Array<{
     __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
+    id?: string | null;
+    word?: string | null;
+    meaning?: string | null;
+    lang_word?: string | null;
+    lang_meaning?: string | null;
+    categoryID?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -347,11 +491,12 @@ export type SyncVocabulariesQuery = {
   __typename: "ModelVocabularyConnection";
   items: Array<{
     __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
+    id?: string | null;
+    word?: string | null;
+    meaning?: string | null;
+    lang_word?: string | null;
+    lang_meaning?: string | null;
+    categoryID?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -362,23 +507,10 @@ export type SyncVocabulariesQuery = {
   startedAt?: number | null;
 };
 
-export type GetAnswerQuery = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type GetCategoryQuery = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -386,25 +518,12 @@ export type GetAnswerQuery = {
   _lastChangedAt: number;
 };
 
-export type ListAnswersQuery = {
-  __typename: "ModelAnswerConnection";
+export type ListCategoriesQuery = {
+  __typename: "ModelCategoryConnection";
   items: Array<{
-    __typename: "Answer";
-    id: string;
-    card?: {
-      __typename: "Vocabulary";
-      id: string;
-      word: string;
-      meaning: string;
-      lang_word: string;
-      lang_meaning: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-    } | null;
-    isRight?: boolean | null;
+    __typename: "Category";
+    id?: string | null;
+    name?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -415,25 +534,12 @@ export type ListAnswersQuery = {
   startedAt?: number | null;
 };
 
-export type SyncAnswersQuery = {
-  __typename: "ModelAnswerConnection";
+export type SyncCategoriesQuery = {
+  __typename: "ModelCategoryConnection";
   items: Array<{
-    __typename: "Answer";
-    id: string;
-    card?: {
-      __typename: "Vocabulary";
-      id: string;
-      word: string;
-      meaning: string;
-      lang_word: string;
-      lang_meaning: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-    } | null;
-    isRight?: boolean | null;
+    __typename: "Category";
+    id?: string | null;
+    name?: string | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -442,15 +548,67 @@ export type SyncAnswersQuery = {
   } | null>;
   nextToken?: string | null;
   startedAt?: number | null;
+};
+
+export type OnCreateCardSubscription = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateCardSubscription = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteCardSubscription = {
+  __typename: "Card";
+  id: string;
+  answers?: {
+    __typename: "Answer";
+    id?: string | null;
+    vocabularyID?: string | null;
+    isRight?: boolean | null;
+  } | null;
+  name?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
 };
 
 export type OnCreateVocabularySubscription = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -460,11 +618,12 @@ export type OnCreateVocabularySubscription = {
 
 export type OnUpdateVocabularySubscription = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -474,11 +633,12 @@ export type OnUpdateVocabularySubscription = {
 
 export type OnDeleteVocabularySubscription = {
   __typename: "Vocabulary";
-  id: string;
-  word: string;
-  meaning: string;
-  lang_word: string;
-  lang_meaning: string;
+  id?: string | null;
+  word?: string | null;
+  meaning?: string | null;
+  lang_word?: string | null;
+  lang_meaning?: string | null;
+  categoryID?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -486,23 +646,10 @@ export type OnDeleteVocabularySubscription = {
   _lastChangedAt: number;
 };
 
-export type OnCreateAnswerSubscription = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type OnCreateCategorySubscription = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -510,23 +657,10 @@ export type OnCreateAnswerSubscription = {
   _lastChangedAt: number;
 };
 
-export type OnUpdateAnswerSubscription = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type OnUpdateCategorySubscription = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -534,23 +668,10 @@ export type OnUpdateAnswerSubscription = {
   _lastChangedAt: number;
 };
 
-export type OnDeleteAnswerSubscription = {
-  __typename: "Answer";
-  id: string;
-  card?: {
-    __typename: "Vocabulary";
-    id: string;
-    word: string;
-    meaning: string;
-    lang_word: string;
-    lang_meaning: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
-  isRight?: boolean | null;
+export type OnDeleteCategorySubscription = {
+  __typename: "Category";
+  id?: string | null;
+  name?: string | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -562,6 +683,105 @@ export type OnDeleteAnswerSubscription = {
   providedIn: "root"
 })
 export class APIService {
+  async CreateCard(
+    input: CreateCardInput,
+    condition?: ModelCardConditionInput
+  ): Promise<CreateCardMutation> {
+    const statement = `mutation CreateCard($input: CreateCardInput!, $condition: ModelCardConditionInput) {
+        createCard(input: $input, condition: $condition) {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCardMutation>response.data.createCard;
+  }
+  async UpdateCard(
+    input: UpdateCardInput,
+    condition?: ModelCardConditionInput
+  ): Promise<UpdateCardMutation> {
+    const statement = `mutation UpdateCard($input: UpdateCardInput!, $condition: ModelCardConditionInput) {
+        updateCard(input: $input, condition: $condition) {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCardMutation>response.data.updateCard;
+  }
+  async DeleteCard(
+    input: DeleteCardInput,
+    condition?: ModelCardConditionInput
+  ): Promise<DeleteCardMutation> {
+    const statement = `mutation DeleteCard($input: DeleteCardInput!, $condition: ModelCardConditionInput) {
+        deleteCard(input: $input, condition: $condition) {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCardMutation>response.data.deleteCard;
+  }
   async CreateVocabulary(
     input: CreateVocabularyInput,
     condition?: ModelVocabularyConditionInput
@@ -574,6 +794,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -604,6 +825,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -634,6 +856,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -652,28 +875,15 @@ export class APIService {
     )) as any;
     return <DeleteVocabularyMutation>response.data.deleteVocabulary;
   }
-  async CreateAnswer(
-    input: CreateAnswerInput,
-    condition?: ModelAnswerConditionInput
-  ): Promise<CreateAnswerMutation> {
-    const statement = `mutation CreateAnswer($input: CreateAnswerInput!, $condition: ModelAnswerConditionInput) {
-        createAnswer(input: $input, condition: $condition) {
+  async CreateCategory(
+    input: CreateCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<CreateCategoryMutation> {
+    const statement = `mutation CreateCategory($input: CreateCategoryInput!, $condition: ModelCategoryConditionInput) {
+        createCategory(input: $input, condition: $condition) {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -690,30 +900,17 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <CreateAnswerMutation>response.data.createAnswer;
+    return <CreateCategoryMutation>response.data.createCategory;
   }
-  async UpdateAnswer(
-    input: UpdateAnswerInput,
-    condition?: ModelAnswerConditionInput
-  ): Promise<UpdateAnswerMutation> {
-    const statement = `mutation UpdateAnswer($input: UpdateAnswerInput!, $condition: ModelAnswerConditionInput) {
-        updateAnswer(input: $input, condition: $condition) {
+  async UpdateCategory(
+    input: UpdateCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<UpdateCategoryMutation> {
+    const statement = `mutation UpdateCategory($input: UpdateCategoryInput!, $condition: ModelCategoryConditionInput) {
+        updateCategory(input: $input, condition: $condition) {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -730,30 +927,17 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <UpdateAnswerMutation>response.data.updateAnswer;
+    return <UpdateCategoryMutation>response.data.updateCategory;
   }
-  async DeleteAnswer(
-    input: DeleteAnswerInput,
-    condition?: ModelAnswerConditionInput
-  ): Promise<DeleteAnswerMutation> {
-    const statement = `mutation DeleteAnswer($input: DeleteAnswerInput!, $condition: ModelAnswerConditionInput) {
-        deleteAnswer(input: $input, condition: $condition) {
+  async DeleteCategory(
+    input: DeleteCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<DeleteCategoryMutation> {
+    const statement = `mutation DeleteCategory($input: DeleteCategoryInput!, $condition: ModelCategoryConditionInput) {
+        deleteCategory(input: $input, condition: $condition) {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -770,7 +954,124 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <DeleteAnswerMutation>response.data.deleteAnswer;
+    return <DeleteCategoryMutation>response.data.deleteCategory;
+  }
+  async GetCard(id: string): Promise<GetCardQuery> {
+    const statement = `query GetCard($id: ID!) {
+        getCard(id: $id) {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCardQuery>response.data.getCard;
+  }
+  async ListCards(
+    filter?: ModelCardFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCardsQuery> {
+    const statement = `query ListCards($filter: ModelCardFilterInput, $limit: Int, $nextToken: String) {
+        listCards(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            answers {
+              __typename
+              id
+              vocabularyID
+              isRight
+            }
+            name
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCardsQuery>response.data.listCards;
+  }
+  async SyncCards(
+    filter?: ModelCardFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncCardsQuery> {
+    const statement = `query SyncCards($filter: ModelCardFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncCards(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            answers {
+              __typename
+              id
+              vocabularyID
+              isRight
+            }
+            name
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncCardsQuery>response.data.syncCards;
   }
   async GetVocabulary(id: string): Promise<GetVocabularyQuery> {
     const statement = `query GetVocabulary($id: ID!) {
@@ -781,6 +1082,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -811,6 +1113,7 @@ export class APIService {
             meaning
             lang_word
             lang_meaning
+            categoryID
             createdAt
             updatedAt
             _version
@@ -852,6 +1155,7 @@ export class APIService {
             meaning
             lang_word
             lang_meaning
+            categoryID
             createdAt
             updatedAt
             _version
@@ -880,25 +1184,12 @@ export class APIService {
     )) as any;
     return <SyncVocabulariesQuery>response.data.syncVocabularies;
   }
-  async GetAnswer(id: string): Promise<GetAnswerQuery> {
-    const statement = `query GetAnswer($id: ID!) {
-        getAnswer(id: $id) {
+  async GetCategory(id: string): Promise<GetCategoryQuery> {
+    const statement = `query GetCategory($id: ID!) {
+        getCategory(id: $id) {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -912,33 +1203,20 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <GetAnswerQuery>response.data.getAnswer;
+    return <GetCategoryQuery>response.data.getCategory;
   }
-  async ListAnswers(
-    filter?: ModelAnswerFilterInput,
+  async ListCategories(
+    filter?: ModelCategoryFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ListAnswersQuery> {
-    const statement = `query ListAnswers($filter: ModelAnswerFilterInput, $limit: Int, $nextToken: String) {
-        listAnswers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ListCategoriesQuery> {
+    const statement = `query ListCategories($filter: ModelCategoryFilterInput, $limit: Int, $nextToken: String) {
+        listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
             id
-            card {
-              __typename
-              id
-              word
-              meaning
-              lang_word
-              lang_meaning
-              createdAt
-              updatedAt
-              _version
-              _deleted
-              _lastChangedAt
-            }
-            isRight
+            name
             createdAt
             updatedAt
             _version
@@ -962,34 +1240,21 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ListAnswersQuery>response.data.listAnswers;
+    return <ListCategoriesQuery>response.data.listCategories;
   }
-  async SyncAnswers(
-    filter?: ModelAnswerFilterInput,
+  async SyncCategories(
+    filter?: ModelCategoryFilterInput,
     limit?: number,
     nextToken?: string,
     lastSync?: number
-  ): Promise<SyncAnswersQuery> {
-    const statement = `query SyncAnswers($filter: ModelAnswerFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
-        syncAnswers(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+  ): Promise<SyncCategoriesQuery> {
+    const statement = `query SyncCategories($filter: ModelCategoryFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncCategories(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
           __typename
           items {
             __typename
             id
-            card {
-              __typename
-              id
-              word
-              meaning
-              lang_word
-              lang_meaning
-              createdAt
-              updatedAt
-              _version
-              _deleted
-              _lastChangedAt
-            }
-            isRight
+            name
             createdAt
             updatedAt
             _version
@@ -1016,8 +1281,89 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <SyncAnswersQuery>response.data.syncAnswers;
+    return <SyncCategoriesQuery>response.data.syncCategories;
   }
+  OnCreateCardListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCard">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateCard {
+        onCreateCard {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCard">>
+  >;
+
+  OnUpdateCardListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCard">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateCard {
+        onUpdateCard {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCard">>
+  >;
+
+  OnDeleteCardListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCard">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteCard {
+        onDeleteCard {
+          __typename
+          id
+          answers {
+            __typename
+            id
+            vocabularyID
+            isRight
+          }
+          name
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCard">>
+  >;
+
   OnCreateVocabularyListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateVocabulary">>
   > = API.graphql(
@@ -1030,6 +1376,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -1054,6 +1401,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -1078,6 +1426,7 @@ export class APIService {
           meaning
           lang_word
           lang_meaning
+          categoryID
           createdAt
           updatedAt
           _version
@@ -1090,28 +1439,15 @@ export class APIService {
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteVocabulary">>
   >;
 
-  OnCreateAnswerListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateAnswer">>
+  OnCreateCategoryListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCategory">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnCreateAnswer {
-        onCreateAnswer {
+      `subscription OnCreateCategory {
+        onCreateCategory {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -1121,31 +1457,18 @@ export class APIService {
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateAnswer">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCategory">>
   >;
 
-  OnUpdateAnswerListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateAnswer">>
+  OnUpdateCategoryListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCategory">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnUpdateAnswer {
-        onUpdateAnswer {
+      `subscription OnUpdateCategory {
+        onUpdateCategory {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -1155,31 +1478,18 @@ export class APIService {
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateAnswer">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCategory">>
   >;
 
-  OnDeleteAnswerListener: Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteAnswer">>
+  OnDeleteCategoryListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCategory">>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnDeleteAnswer {
-        onDeleteAnswer {
+      `subscription OnDeleteCategory {
+        onDeleteCategory {
           __typename
           id
-          card {
-            __typename
-            id
-            word
-            meaning
-            lang_word
-            lang_meaning
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          isRight
+          name
           createdAt
           updatedAt
           _version
@@ -1189,6 +1499,6 @@ export class APIService {
       }`
     )
   ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteAnswer">>
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCategory">>
   >;
 }

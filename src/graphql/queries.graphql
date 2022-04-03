@@ -1,4 +1,74 @@
 # this is an auto generated file. This will be overwritten
+query GetCard($id: ID!) {
+  getCard(id: $id) {
+    id
+    answers {
+      id
+      vocabularyID
+      isRight
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListCards(
+  $filter: ModelCardFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCards(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      answers {
+        id
+        vocabularyID
+        isRight
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncCards(
+  $filter: ModelCardFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCards(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      answers {
+        id
+        vocabularyID
+        isRight
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query GetVocabulary($id: ID!) {
   getVocabulary(id: $id) {
     id
@@ -6,6 +76,7 @@ query GetVocabulary($id: ID!) {
     meaning
     lang_word
     lang_meaning
+    categoryID
     createdAt
     updatedAt
     _version
@@ -25,6 +96,7 @@ query ListVocabularies(
       meaning
       lang_word
       lang_meaning
+      categoryID
       createdAt
       updatedAt
       _version
@@ -53,6 +125,7 @@ query SyncVocabularies(
       meaning
       lang_word
       lang_meaning
+      categoryID
       createdAt
       updatedAt
       _version
@@ -63,22 +136,10 @@ query SyncVocabularies(
     startedAt
   }
 }
-query GetAnswer($id: ID!) {
-  getAnswer(id: $id) {
+query GetCategory($id: ID!) {
+  getCategory(id: $id) {
     id
-    card {
-      id
-      word
-      meaning
-      lang_word
-      lang_meaning
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    isRight
+    name
     createdAt
     updatedAt
     _version
@@ -86,27 +147,15 @@ query GetAnswer($id: ID!) {
     _lastChangedAt
   }
 }
-query ListAnswers(
-  $filter: ModelAnswerFilterInput
+query ListCategories(
+  $filter: ModelCategoryFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listAnswers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      card {
-        id
-        word
-        meaning
-        lang_word
-        lang_meaning
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      isRight
+      name
       createdAt
       updatedAt
       _version
@@ -117,13 +166,13 @@ query ListAnswers(
     startedAt
   }
 }
-query SyncAnswers(
-  $filter: ModelAnswerFilterInput
+query SyncCategories(
+  $filter: ModelCategoryFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncAnswers(
+  syncCategories(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -131,19 +180,7 @@ query SyncAnswers(
   ) {
     items {
       id
-      card {
-        id
-        word
-        meaning
-        lang_word
-        lang_meaning
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      isRight
+      name
       createdAt
       updatedAt
       _version

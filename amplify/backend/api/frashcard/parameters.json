@@ -1,6 +1,0 @@
-{
-  "AppSyncApiName": "frashcard",
-  "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-03-30T08:46:49.402Z"
-}

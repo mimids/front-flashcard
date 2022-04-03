@@ -1,12 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA,  NO_ERRORS_SCHEMA} from '@angular/core';
+import { NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreModule } from './core/core.module';
+
 // from here for aws api
 import Amplify from 'aws-amplify';
 import amplify from '../aws-exports';
- 
  
 Amplify.configure(amplify);
 // until here for aws api
@@ -33,6 +33,11 @@ export const routes: Routes = [
       import('./flashcard/flashcard.module').then((m) => m.FlashcardModule),
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: 'list',
     loadChildren: () =>
       import('./flashcard-list/flashcard-list.module').then((m) => m.FlashcardListModule),
@@ -48,11 +53,10 @@ export const routes: Routes = [
     CoreModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' },
     ),
-
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
+  
   
 })
 export class AppModule { }

@@ -1,0 +1,26 @@
+type Card @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  answers: Answer
+  name: String
+}
+
+type Answer {
+  id: ID
+  vocabularyID: ID
+  isRight: Boolean
+}
+
+type Vocabulary @model @auth(rules: [{allow: public}]) {
+  id: ID
+  word: String
+  meaning: String
+  lang_word: String
+  lang_meaning: String
+  categoryID: ID
+}
+
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID
+  name: String
+}
+ 

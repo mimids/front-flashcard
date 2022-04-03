@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { WebService } from '../../services/web.service';
+import { APIService, Vocabulary } from '../../API.service';
 
 @Component({
   selector: 'app-flashcard-contents',
@@ -8,14 +10,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class FlashcardContentsComponent implements OnInit {
 
   @Input() card: any;
-@Output() answer = new EventEmitter
+@Output() answer = new EventEmitter;
 
   showAnswer = false;
 
-  constructor() { }
+  constructor(
+    private api: APIService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
+
+  ) { }
 
   ngOnInit(): void {
-    console.log('detail'+this.card);
+    console.log('detail', this.card);
     
   }
 
@@ -23,8 +29,19 @@ export class FlashcardContentsComponent implements OnInit {
     this.showAnswer= !this.showAnswer;
 
   }
-  setAnswer(isRight : any){
-    this.answer.emit({ card : this.card, isRight : isRight})
+  setAnswer(isRight : boolean){
+
+    // this.answer.emit({ card : this.card, isRight : isRight})
+
+    // this.api
+    // .UpdateCard({ id: this.card.id as string)
+    // .then((event) => {
+    //   console.log('answer updated!',isRight );
+    // })
+    // .catch((e) => {
+    //   console.log('error updating answer...', e);
+    // });
+  
   }
 
 }
