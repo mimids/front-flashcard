@@ -15,7 +15,7 @@ export class FlashcardListComponent implements OnInit {
   ) {}
 
    ngOnInit() {
-    this.api.ListVocabularies(undefined, 10).then((event) => {
+    this.api.ListVocabularies().then((event) => {
    this.datas = event.items as Vocabulary[];
    this.changeDetectorRef.detectChanges();
 
